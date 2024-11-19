@@ -16,7 +16,7 @@ namespace MyFps
 
         private void ShowAmmoUI()
         {
-            ammoUI.SetActive(PlayerStats.Instance.HasGun);
+            //ammoUI.SetActive(PlayerStats.Instance.HasGun);
         }
     }
 }
