@@ -1,57 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace MyFps
 {
     public class PistolShoot : MonoBehaviour
     {
         #region Variables
-        private Animator animator;
-        //
         public ParticleSystem muzzle;
         public AudioSource pistolShot;
 
         //public Transform camera;
         public Transform firePoint;
 
-        //공격력
-        [SerializeField] private float attackDamage = 5f;
-
         //연사 딜레이
         [SerializeField] private float fireDelay = 0.5f;
         private bool isFire = false;
 
-        //임팩트
-        public GameObject hitImpactPrefab;
+        public GameObject bulletPrefab;
+        public float bulletSpeed = 50f;
+
+        public AmmoUI ammoUI;
         #endregion
 
-        // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
-            //참조
-            animator = GetComponent<Animator>();
+            XRGrabInteractable grabInteractable = GetComponent<XRGrabInteractable>();
+            grabInteractable.activated.AddListener(Fire);
         }
 
-        // Update is called once per frame
-        void Update()
+        void Fire(ActivateEventArgs args)
         {
-            //슛
-            /*if(Input.GetButtonDown("Fire") && !isFire)
+            if (isFire == false && PlayerStats.Instance.UseAmmo(1) == true)
             {
-                if(PlayerStats.Instance.UseAmmo(1) == true)
-                {
-                    StartCoroutine(Shoot());
-                }                
-            }*/
+                StartCoroutine(Shoot());
+            }
         }
+
 
         IEnumerator Shoot()
         {
             isFire = true;
 
+            GameObject bulletGo = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            bulletGo.GetComponent<Rigidbody>().linearVelocity = firePoint.forward * bulletSpeed;
+            Destroy(bulletGo, 5f);
+
             //내앞에 100안에 적이 있으면 적에게 데미지를 준다
-            float maxDistance = 100f;
+            /*float maxDistance = 100f;
             RaycastHit hit;
             if(Physics.Raycast(firePoint.position, firePoint.TransformDirection(Vector3.forward), out hit, maxDistance))
             {
@@ -66,11 +64,9 @@ namespace MyFps
                 {
                     damageable.TakeDamage(attackDamage);
                 }
-            }
+            }*/
 
             //슛 효과 - VFX, SFX
-            animator.SetTrigger("Fire");
-
             pistolShot.Play();
 
             muzzle.gameObject.SetActive(true);
@@ -79,6 +75,9 @@ namespace MyFps
             yield return new WaitForSeconds(fireDelay);
             muzzle.Stop();
             muzzle.gameObject.SetActive(false);
+
+            //UI
+            ammoUI.ShowAmmoUI();
 
             isFire = false;
         }
