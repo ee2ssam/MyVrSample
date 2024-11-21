@@ -1548,7 +1548,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &281814196
 Transform:
   m_ObjectHideFlags: 0
@@ -27084,7 +27084,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1620877479
 Transform:
   m_ObjectHideFlags: 0
@@ -27321,7 +27321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1635356056
 Transform:
   m_ObjectHideFlags: 0
@@ -27894,6 +27894,7 @@ GameObject:
   - component: {fileID: 1743383136}
   - component: {fileID: 1743383135}
   - component: {fileID: 1743383134}
+  - component: {fileID: 1743383139}
   m_Layer: 0
   m_Name: FirstTrigger
   m_TagString: Untagged
@@ -27908,7 +27909,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1743383133}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e21313f7b5c517341af878e9fdf9c148, type: 3}
   m_Name: 
@@ -28007,6 +28008,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2109971907}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1743383139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743383133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac3c83bc5bdd1546aed22a126453cca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldMenuUI: {fileID: 1165125123}
+  textBox: {fileID: 325882578}
+  offset: 1
+  locomotion: {fileID: 1061484828}
+  theArrow: {fileID: 1171245945}
+  sequence: Looks like a weapon on that table
+  line03: {fileID: 1099121660}
 --- !u!1 &1746679248
 GameObject:
   m_ObjectHideFlags: 0
@@ -29505,7 +29525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2117901812
 Transform:
   m_ObjectHideFlags: 0
@@ -30640,7 +30660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4941543103285790129, guid: bc2726f8bed2d654f967da34bc39568d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8093829907049041112, guid: bc2726f8bed2d654f967da34bc39568d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
